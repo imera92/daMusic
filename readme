@@ -1,0 +1,52 @@
+DaMusic
+-------
+
+Práctica en grupo de máximo dos estudiantes.
+
+Para el desarrollo de esta práctica usted creara el sitio llamado DaMusic que permitira buscar un artista y conocer algunos datos del mismo junto con el top 5 de sus canciones.
+
+Usted tendra que utilizar:
+ - Bootstrap
+ - Jquery
+ - AJAX
+
+Primero el sitio funcionara de la siguiente manera:
+
+1) Cuando un usuario escriba el nombre de un artista y de click en el boton "Buscar Artista", usted debera hacer un requerimiento AJAX desde el Javascript del lado del cliente hacia el API de Spotify que cuenta con el siguiente endpoint:
+
+https://developer.spotify.com/web-api/search-item/
+La cual tiene la siguiente estructura: https://api.spotify.com/v1/search?q=<query>&type=artist
+Y la puede utilizar de la siguiente forma:
+https://api.spotify.com/v1/search?q=coldplay&type=artist
+
+Este endpoint le devolvera un arreglo con algunos resultados de donde usted seleccionara el primer artista encontrado (item 0). En ese item usted encontrara algunos datos que son para mostrar en el sitio.
+
+2) Luego, usted lanzara un requerimiento para sacar el top 5 de canciones del artista. Para lo cual usted cuenta con el siguiente endpoint:
+
+https://developer.spotify.com/web-api/get-artists-top-tracks/
+La cual tiene la siguiente estructura: https://api.spotify.com/v1/artists/<idartista>/top-tracks?country=EC
+Y la puede utilizar de la siguiente forma (usted debera incluir el id del artista):
+https://api.spotify.com/v1/artists/4gzpq5DPGxSnKTe4SA8HAU/top-tracks?country=EC
+
+Este endpoint le devolvera un arreglo con las canciones top del artista de la cual usted seleccionara las 5 primeras.
+
+
+3) Una vez que tenga las 5 canciones, usted lanzara 5 requerimientos al API de youtube para obtener los videos de esas canciones.
+
+Para utilizar el API de youtube, usted debera registrarse en google apis y crear un proyecto para obtener un API key. Ver:
+https://developers.google.com/youtube/v3/getting-started?hl=es-419
+https://developers.google.com/youtube/registering_an_application?hl=es-419
+
+Una vez que ya tenga su API key, usted puede realizar requerimientos contra el api de youtube de la siguiente forma:
+
+https://developers.google.com/youtube/v3/docs/search/list
+La cual tiene la siguiente estructura: https://www.googleapis.com/youtube/v3/search?key=<APIKey>&q=<query>&part=snippet&type=video
+Y aqui un ejemplo de como utilizarla:
+https://www.googleapis.com/youtube/v3/search?key=XXXX&q=coldplay+Hymn+For+The+Weekend&part=snippet&type=video
+
+Es recomendable que realice una busqueda con el nombre del artista y el nombre de la canción. Youtube le respondera con un arreglo de posibles videos de donde usted seleccionara el primer elemento (item 0).
+
+Una vez que reciba las respuestas usted debera mostrar las imagenes del video de cada cancion con un link para verla en youtube. 
+
+
+NOTA IMPORTANTE: Si usted realiza esta practica mediante el uso de alguna tecnologia del lado del servidor, su calificacion es de 0.

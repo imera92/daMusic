@@ -1,0 +1,41 @@
+body{
+	font-family: 'Roboto', sans-serif;
+}
+#artist-pane{
+	display: none;
+}
+#top{
+	display: none;
+}
+.nodisp{
+	display: none;
+}
+.nodisp:hover{
+	display: block;
+}
+
+/* BOTONES */
+.btn{
+	background-color: #3d96ca;
+	color: #ffffff;
+	-webkit-transition: 0.25s;
+	transition: 0.25s;
+}
+.btn:hover{
+	background-color: #ffffff;
+	color: #3d96ca;
+	border-color: #3d96ca;
+	-webkit-transition: 0.25s;
+	transition: 0.25s;
+}
+
+/*TEXT*/
+.bold{
+	color: #3d96ca;
+	font-weight: bold;
+}
+
+/*IMAGENES*/
+.top5-img{
+	
+}
