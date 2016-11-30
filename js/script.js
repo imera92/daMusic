@@ -63,6 +63,7 @@ function loadTop(id){
 		}
 		for(i = 0; i < 5; i++){
 			var artist = top5[i].artists[0].name.toLowerCase();
+			//console.log(artist);
 			var str = top5[i].name.toLowerCase();
 			var song = str.replace('- ', '').replace(/ /g,'+');
 			var videoUrl = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyB9311I48xU6Oh2OPxd1qgnaHNP5K1fGMI&q='+artist+'+'+song+'&part=snippet&type=video'
@@ -70,37 +71,52 @@ function loadTop(id){
 				index++;
 				var video = ans.items[0];
 				var imgUrl = video.snippet.thumbnails.high.url;
-				var videoUrl = 'https://www.youtube.com/watch?v='+video.id.videoId;
+				var url = 'https://www.youtube.com/watch?v='+video.id.videoId;
+				var thumbText = video.snippet.title;
 				switch (index){
 					case 4:
 						var $div = $('<div>', {'class': 'col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2',});
-						var $a = $('<a>', {'href': videoUrl, 'target': '_blank'});
+						var $a = $('<a>', {'href': url, 'target': '_blank'});
 						var $img = $('<img>', {'src': imgUrl, 'class': 'img-responsive'});
+						//Etiqueta que muestra el titulo del video al pasar el puntero
+						var $text = $('<div>', {'class': 'text'});
+						$text.text(thumbText);
+						$text.css({'position': 'absolute', 'top': '25%', 'right': '0', 'bottom': '0', 'left': '0',  'width': '100%', 'height': '40%','color': 'rgba(255,255,255,0)', 'text-align': 'center', 'transition': 'all 0.2s linear'});
+						$text.hover(function(){$(this).css({'background-color': 'rgba(0,0,0,.8)', 'color': 'rgba(255,255,255,1)', 'transition': 'all 0.2s linear'});}, function(){$(this).css({'color': 'rgba(255,255,255,0)', 'background-color': 'rgba(0,0,0,0)'});});
+
 						$a.append($img);
 						$div.append($a);
+						$div.append($text);
 						$('#tile-2').append($div);
 						break;
 					case 5:
 						var $div = $('<div>', {'class': 'col-sm-4 col-md-4 col-lg-4',});
-						var $a = $('<a>', {'href': videoUrl, 'target': '_blank'});
+						var $a = $('<a>', {'href': url, 'target': '_blank'});
 						var $img = $('<img>', {'src': imgUrl, 'class': 'img-responsive'});
+						//Etiqueta que muestra el titulo del video al pasar el puntero
+						var $text = $('<div>', {'class': 'text'});
+						$text.text(thumbText);
+						$text.css({'position': 'absolute', 'top': '25%', 'right': '0', 'bottom': '0', 'left': '0',  'width': '100%', 'height': '40%','color': 'rgba(255,255,255,0)', 'text-align': 'center', 'transition': 'all 0.2s linear'});
+						$text.hover(function(){$(this).css({'background-color': 'rgba(0,0,0,.8)', 'color': 'rgba(255,255,255,1)', 'transition': 'all 0.2s linear'});}, function(){$(this).css({'color': 'rgba(255,255,255,0)', 'background-color': 'rgba(0,0,0,0)'});});
+
 						$a.append($img);
 						$div.append($a);
+						$div.append($text);
 						$('#tile-2').append($div);
 						break;
 					default:
 						var $div = $('<div>', {'class': 'col-sm-4 col-md-4 col-lg-4',});
-						var $a = $('<a>', {'href': videoUrl, 'target': '_blank'});
+						var $a = $('<a>', {'href': url, 'target': '_blank'});
 						var $img = $('<img>', {'src': imgUrl, 'class': 'img-responsive'});
-						/*
-						var $text = $('<span>', {'class': 'text'});
-						$text.text('HOLA');
-						$text.css({'position': 'absolute', 'top': '0', 'color': '#f00', 'background-color': 'rgba(0,0,0,0.8)', 'width': '100%', 'height': '100%', 'text-align': 'left', 'z-index': '10', 'opacity': '0', 'transition': 'all 0.2s ease'});
-						$text.hover(function(){$(this).css('opacity', '1');}, function(){$(this).css('opacity', '0');});
-						*/
+						//Etiqueta que muestra el titulo del video al pasar el puntero
+						var $text = $('<div>', {'class': 'text'});
+						$text.text(thumbText);
+						$text.css({'position': 'absolute', 'top': '25%', 'right': '0', 'bottom': '0', 'left': '0',  'width': '100%', 'height': '40%','color': 'rgba(255,255,255,0)', 'text-align': 'center', 'transition': 'all 0.2s linear'});
+						$text.hover(function(){$(this).css({'background-color': 'rgba(0,0,0,.8)', 'color': 'rgba(255,255,255,1)', 'transition': 'all 0.2s linear'});}, function(){$(this).css({'color': 'rgba(255,255,255,0)', 'background-color': 'rgba(0,0,0,0)'});});
+						
 						$a.append($img);
-						//$div.append($text);
 						$div.append($a);
+						$div.append($text);
 						$('#tile-1').append($div);
 						break;
 				}
